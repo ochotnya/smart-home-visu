@@ -9,8 +9,12 @@ function RoomSection({ roomName }) {
       <div className="room-container__header">{roomName}</div>
       <div className="room-container__content">
         <DeviceBulb name="Centralna" />
-        <DeviceOutlet />
-        <DeviceTemperatureSensor />
+        <DeviceOutlet name="Narożnik TV" />
+        <DeviceTemperatureSensor name="Salon" />
+        <DeviceOutlet name="Narożnik TV" />
+        <DeviceTemperatureSensor name="Salon" />
+        <DeviceOutlet name="Narożnik TV" />
+        <DeviceTemperatureSensor name="Salon" />
       </div>
     </div>
   );

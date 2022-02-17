@@ -6,7 +6,8 @@ function DeviceBulb({ name }) {
   const [turnedOn, setTurnedOn] = useState(false);
   return (
     <div className="device-container" onClick={() => setTurnedOn(!turnedOn)}>
-      <div className="device-container__header">Żarówka {name}</div>
+      <div className="device-container__header">Żarówka</div>
+      <div className="device-container__name">{name}</div>
       <div className="device-container__content">
         <AiFillBulb size={30} className={turnedOn ? "bulbOn" : "bulbOff"} />
       </div>

@@ -6,10 +6,10 @@
   opacity: 1;
   transition: 100ms ease-in-out;
   color: white;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
+  display: grid;
+  grid-template-rows: 0.4fr 0.3fr 1fr 0.3fr;
   min-width: 7rem;
+  min-height: 7rem;
 }
 
 .device-container:hover {
@@ -19,15 +19,26 @@
 .device-container__header {
   font-weight: 700;
   font-size: 1rem;
-  margin-bottom: 0.3rem;
+  /* background-color: rgb(226, 21, 148); */
+}
+.device-container__name {
+  font-weight: 500;
+  font-size: 0.8rem;
+  /* background-color: rgb(255, 153, 0); */
 }
 
 .device-container__content {
   display: flex;
+  align-items: center;
   justify-content: center;
+  height: 100%;
+  /* background-color: red; */
+  font-size: 2rem;
 }
 .device-container__connection-state {
+  text-align: left;
   font-size: 0.6rem;
+  /* background-color: rgb(95, 20, 214); */
 }
 .bulbOn {
   color: gold;
