@@ -1,0 +1,16 @@
+.room-container {
+  border: 1px solid rgb(165, 165, 165);
+  padding: 1rem;
+  margin: 1rem;
+  border-radius: 1rem;
+}
+
+.room-container__header {
+  margin-bottom: 0.5rem;
+  text-align: left;
+}
+
+.room-container__content {
+  display: flex;
+  gap: 1rem;
+}
