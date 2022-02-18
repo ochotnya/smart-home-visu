@@ -10,6 +10,8 @@
   grid-template-rows: 0.4fr 0.3fr 1fr 0.3fr;
   min-width: 7rem;
   min-height: 7rem;
+  touch-action: none;
+  user-select: none;
 }
 
 .device-container:hover {
