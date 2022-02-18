@@ -7,7 +7,6 @@ import "./Popup.css";
 function Popup({ open, data }) {
   const { selectedDevice, devices } = useContext(DataContext);
   const deviceData = devices.find((item) => item.id === selectedDevice);
-  // console.log(deviceData);
   let details = {};
   if (deviceData) {
     switch (deviceData.type) {
@@ -28,9 +27,14 @@ function Popup({ open, data }) {
 
   return open && deviceData ? (
     <div className="popup">
-      <div className="popup__header">{selectedDevice}</div>
-      <div className="popup__content"></div>
-      {details}
+      <div className="popup__header">
+        {deviceData.name}
+        <div className="popup__connection-state">
+          Stan połączenia: {deviceData.connectionState}
+        </div>
+      </div>
+
+      <div className="popup__content">{details}</div>
     </div>
   ) : (
     <></>

@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import "./Device.css";
 import { AiFillBulb } from "react-icons/ai";
+import { ImSwitch } from "react-icons/im";
 import { DataContext } from "../context/DataContext";
 
 function DeviceBulb({ data }) {
@@ -25,11 +26,20 @@ function DeviceBulb({ data }) {
 
 function DetailsBulb({ data }) {
   return (
-    <div className="details__container">
-      <div class="details__info">
-        <div className="details__turned-on">{data.isTurnedOn}</div>
-        <div className="details__color">{data.color}</div>
-        <div className="details__brightness">{data.brightness}</div>
+    <div className="details__light-controls">
+      <div className="details__light__turned-on">
+        <ImSwitch
+          style={{ color: data.isTurnedOn ? "green" : "red" }}
+          size={50}
+        />
+      </div>
+      {/* <div className="details__light-color">
+        <input className="details__light-color" type="color" value={data.color} />
+      </div> */}
+      <input className="details__light-color" type="color" value={data.color} />
+      <div className="details__light-brightness">
+        Jasność: {data.brightness}
+        <input type="range" />
       </div>
     </div>
   );

@@ -12,7 +12,7 @@ function DeviceTemperatureSensor({ data }) {
     <div className="device-container" onClick={clickHandler}>
       <div className="device-container__header">Temperatura</div>
       <div className="device-container__name">{data.name}</div>
-      <div className="device-container__content">{data.temperature}°</div>
+      <div className="device-container__content">{data.temperature}°C</div>
       <div className="device-container__connection-state">Połączono</div>
     </div>
   );
@@ -21,8 +21,8 @@ function DeviceTemperatureSensor({ data }) {
 function DetailsTemperature({ data }) {
   return (
     <div className="details__container">
-      <div class="details__info">
-        <div className="details__temperature">{data.temperature}</div>
+      <div className="details__temperature">
+        Temperatura: {data.temperature}°C
       </div>
     </div>
   );

@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import "./Device.css";
 import { DataContext } from "../context/DataContext";
+import { ImSwitch } from "react-icons/im";
 
 function DeviceOutlet({ data }) {
   const { setSelectedDevice, openPopup } = useContext(DataContext);
@@ -22,9 +23,12 @@ function DeviceOutlet({ data }) {
 function DetailsOutlet({ data }) {
   return (
     <div className="details__container">
-      <div class="details__info">
-        <div className="details__turned-on">{data.isTurnedOn}</div>
-        <div className="details__power">{data.powerConsumption}</div>
+      <div className="details__power">Pobór mocy: {data.powerConsumption}W</div>
+      <div className="details__turned-on">
+        <ImSwitch
+          style={{ color: data.isTurnedOn ? "green" : "red" }}
+          size={50}
+        />
       </div>
     </div>
   );
