@@ -33,9 +33,6 @@ function DetailsBulb({ data }) {
           size={50}
         />
       </div>
-      {/* <div className="details__light-color">
-        <input className="details__light-color" type="color" value={data.color} />
-      </div> */}
       <input className="details__light-color" type="color" value={data.color} />
       <div className="details__light-brightness">
         Jasność: {data.brightness}

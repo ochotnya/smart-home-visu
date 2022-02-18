@@ -36,24 +36,29 @@ function App() {
   const [isOpenPopup, setOpenPopup] = useState(false);
   const [selectedDevice, setSelectedDevice] = useState("");
   const [devices, setDevices] = useState(myDevices);
+
   const openPopup = (data) => {
     setOpenPopup(true);
+  };
+  const closePopup = (data) => {
+    setOpenPopup(false);
   };
   const testFcn = () => {
     console.log("printuije");
   };
   const position = { x: 0, y: 0 };
-  interact(".popup").draggable({
-    inertia: false,
-    listeners: {
-      move(event) {
-        position.x += event.dx;
-        position.y += event.dy;
+  interact(".popup")
+    .draggable({
+      listeners: {
+        move(event) {
+          position.x += event.dx;
+          position.y += event.dy;
 
-        event.target.style.transform = `translate(${position.x}px, ${position.y}px)`;
+          event.target.style.transform = `translate(${position.x}px, ${position.y}px)`;
+        },
       },
-    },
-  });
+    })
+    .styleCursor(false);
   const changeFcn = () => {
     const updatedList = devices.map((device) => {
       if (device.id === "outlet1") {
@@ -66,12 +71,17 @@ function App() {
   };
   return (
     <DataContext.Provider
-      value={{ selectedDevice, setSelectedDevice, openPopup, testFcn, devices }}
+      value={{
+        selectedDevice,
+        setSelectedDevice,
+        openPopup,
+        testFcn,
+        devices,
+        closePopup,
+      }}
     >
       <div className="App">
         <Popup open={isOpenPopup} />
-        <button onClick={() => setOpenPopup(false)}>close</button>
-        <button onClick={changeFcn}>zmiana</button>
         <div className="content">
           <RoomSection roomName="Salon" />
           <RoomSection roomName="Sypialnia" />

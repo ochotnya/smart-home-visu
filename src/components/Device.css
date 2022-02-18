@@ -42,13 +42,6 @@
   font-size: 0.6rem;
   /* background-color: rgb(95, 20, 214); */
 }
-.bulbOn {
-  color: gold;
-}
-
-.bulbOff {
-  color: white;
-}
 
 .details__container {
   /* border: 1px solid black; */
@@ -76,12 +69,12 @@
   /* background-color: blue; */
 }
 .details__light__turned-on {
-  /* margin-top: 1rem; */
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   grid-column: 1;
+  cursor: pointer;
   /* background-color: black; */
 }
 .details__light-color {
@@ -93,7 +86,10 @@
   height: 4rem;
   /* background-color: yellow; */
 }
-
+.details__light-color::-webkit-color-swatch {
+  border-radius: 50%;
+  border: none;
+}
 .details__light-brightness {
   display: flex;
   justify-content: center;
