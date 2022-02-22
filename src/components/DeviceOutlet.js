@@ -1,13 +1,15 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import "./Device.css";
 import { DataContext } from "../context/DataContext";
 import { ImSwitch } from "react-icons/im";
 
-function DeviceOutlet({ data }) {
-  const { setSelectedDevice, openPopup } = useContext(DataContext);
+function DeviceOutlet({ data, room }) {
+  const { setSelectedRoom, setSelectedDevice, openPopup } =
+    useContext(DataContext);
 
   const clickHandler = () => {
     setSelectedDevice(data.id);
+    setSelectedRoom(room);
     openPopup();
   };
   return (

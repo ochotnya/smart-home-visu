@@ -1,24 +1,24 @@
 import React, { useContext } from "react";
 import { DataContext } from "../context/DataContext";
-import { DetailsBulb, InfoBulb } from "./DeviceBulb";
+import { DetailsBulb } from "./DeviceBulb";
 import { DetailsOutlet } from "./DeviceOutlet";
 import { DetailsTemperature } from "./DeviceTemperatureSensor";
 import { AiOutlineClose } from "react-icons/ai";
 import "./Popup.css";
-function Popup({ open, data }) {
-  const { selectedDevice, devices, closePopup } = useContext(DataContext);
-  const deviceData = devices.find((item) => item.id === selectedDevice);
+function Popup({ open, selectedDevice }) {
+  const { closePopup } = useContext(DataContext);
+
   let details = {};
-  if (deviceData) {
-    switch (deviceData.type) {
+  if (selectedDevice) {
+    switch (selectedDevice.type) {
       case "bulb":
-        details = <DetailsBulb data={deviceData} />;
+        details = <DetailsBulb data={selectedDevice} />;
         break;
       case "outlet":
-        details = <DetailsOutlet data={deviceData} />;
+        details = <DetailsOutlet data={selectedDevice} />;
         break;
       case "temperatureSensor":
-        details = <DetailsTemperature data={deviceData} />;
+        details = <DetailsTemperature data={selectedDevice} />;
         break;
 
       default:
@@ -26,13 +26,13 @@ function Popup({ open, data }) {
     }
   }
 
-  return open && deviceData ? (
+  return open && selectedDevice ? (
     <div className="popup">
       <div className="popup__top-bar">
         <div className="popup__header">
-          {deviceData.name}
+          {selectedDevice.name}
           <div className="popup__connection-state">
-            Stan połączenia: {deviceData.connectionState}
+            Stan połączenia: {selectedDevice.connectionState}
           </div>
         </div>
         <AiOutlineClose

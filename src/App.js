@@ -1,91 +1,96 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import Popup from "./components/Popup";
 import RoomSection from "./components/RoomSection";
 import interact from "interactjs";
 import { DataContext } from "./context/DataContext";
 
-const myDevices = [
-  {
-    type: "bulb",
-    id: "bulb1",
-    name: "Lampa",
-    connectionState: "connected",
-    isTurnedOn: true,
-    brightness: 12,
-    color: "#eeccff",
-  },
-  {
-    type: "outlet",
-    id: "outlet1",
-    name: "Gniazdko TV",
-    connectionState: "connected",
-    isTurnedOn: true,
-    powerConsumption: 54,
-  },
-  {
-    type: "temperatureSensor",
-    id: "temperatureSensor1",
-    name: "W salonie",
-    connectionState: "connected",
-    temperature: 23.2,
-  },
-];
+const socket = new WebSocket("ws://localhost:4000");
 
 function App() {
   const [isOpenPopup, setOpenPopup] = useState(false);
   const [selectedDevice, setSelectedDevice] = useState("");
-  const [devices, setDevices] = useState(myDevices);
+  const [selectedRoom, setSelectedRoom] = useState("");
+  const [rooms, setRooms] = useState([]);
+  const [roomsLoaded, setRoomsLoaded] = useState(false);
+  const [position, setPosition] = useState({ x: 0, y: 0 }); //popup window position
 
-  const openPopup = (data) => {
-    setOpenPopup(true);
-  };
-  const closePopup = (data) => {
-    setOpenPopup(false);
-  };
-  const testFcn = () => {
-    console.log("printuije");
-  };
-  const position = { x: 0, y: 0 };
+  //setup draggable window
   interact(".popup")
     .draggable({
       listeners: {
         move(event) {
-          position.x += event.dx;
-          position.y += event.dy;
-
+          setPosition({
+            x: (position.x += event.dx),
+            y: (position.y += event.dy),
+          });
           event.target.style.transform = `translate(${position.x}px, ${position.y}px)`;
         },
       },
     })
     .styleCursor(false);
-  const changeFcn = () => {
-    const updatedList = devices.map((device) => {
-      if (device.id === "outlet1") {
-        return { ...device, powerConsumption: 88 };
-      } else {
-        return device;
+
+  //functions
+  const openPopup = (data) => {
+    setOpenPopup(true);
+  };
+
+  const closePopup = (data) => {
+    setOpenPopup(false);
+  };
+
+  const changeTemp = () => {
+    const newVal = Math.floor(Math.random() * (50.0 - 10.0 + 1)) + 10.0;
+    socket.send(
+      JSON.stringify({
+        topic: "setTemp",
+        data: JSON.stringify({ id: "temperatureSensor1", value: newVal }),
+      })
+    );
+  };
+
+  //effects
+  useEffect(() => {
+    socket.addEventListener("message", (event) => {
+      const content = JSON.parse(event.data);
+      if (content.topic === "rooms") {
+        setRooms(content.data);
+        setRoomsLoaded(true);
       }
     });
-    setDevices(updatedList);
-  };
+  }, []);
+
   return (
     <DataContext.Provider
       value={{
-        selectedDevice,
         setSelectedDevice,
         openPopup,
-        testFcn,
-        devices,
+        setSelectedRoom,
         closePopup,
       }}
     >
       <div className="App">
-        <Popup open={isOpenPopup} />
+        {selectedDevice !== "" && (
+          <Popup
+            open={isOpenPopup}
+            selectedDevice={rooms
+              .find((room) => room.name === selectedRoom)
+              .devices.find((dev) => dev.id === selectedDevice)}
+          />
+        )}
+        <button onClick={changeTemp}>Change temp</button>
         <div className="content">
-          <RoomSection roomName="Salon" />
-          <RoomSection roomName="Sypialnia" />
-          <RoomSection roomName="Garaż" />
+          {roomsLoaded
+            ? rooms.map((room) => {
+                return (
+                  <RoomSection
+                    key={room.id}
+                    roomName={room.name}
+                    devices={room.devices}
+                  />
+                );
+              })
+            : "Ładowanie"}
         </div>
       </div>
     </DataContext.Provider>

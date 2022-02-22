@@ -1,10 +1,11 @@
 import { createContext } from "react";
 
 export const DataContext = createContext({
-  selectedDevice: "none",
+  selectedDevice: {},
   openPopup: () => {},
   closePopup: () => {},
   setSelectedDevice: () => {},
   testFcn: () => {},
-  devices: [],
+  setSelectedRoom: () => {},
+  rooms: [],
 });

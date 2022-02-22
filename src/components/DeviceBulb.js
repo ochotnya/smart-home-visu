@@ -4,12 +4,14 @@ import { AiFillBulb } from "react-icons/ai";
 import { ImSwitch } from "react-icons/im";
 import { DataContext } from "../context/DataContext";
 
-function DeviceBulb({ data }) {
+function DeviceBulb({ data, room }) {
   const [turnedOn, setTurnedOn] = useState(false);
-  const { setSelectedDevice, openPopup } = useContext(DataContext);
+  const { setSelectedRoom, setSelectedDevice, openPopup } =
+    useContext(DataContext);
 
   const clickHandler = () => {
     setSelectedDevice(data.id);
+    setSelectedRoom(room);
     openPopup();
   };
   return (
@@ -33,7 +35,11 @@ function DetailsBulb({ data }) {
           size={50}
         />
       </div>
-      <input className="details__light-color" type="color" value={data.color} />
+      <input
+        className="details__light-color"
+        type="color"
+        defaultValue={data.color}
+      />
       <div className="details__light-brightness">
         Jasność: {data.brightness}
         <input type="range" />
