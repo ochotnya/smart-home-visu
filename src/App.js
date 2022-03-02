@@ -26,6 +26,7 @@ function App() {
           });
           event.target.style.transform = `translate(${position.x}px, ${position.y}px)`;
         },
+
       },
     })
     .styleCursor(false);

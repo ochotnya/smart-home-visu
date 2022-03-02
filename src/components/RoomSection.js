@@ -1,4 +1,5 @@
 import React from "react";
+import AddNew from "./AddNew";
 import DeviceBulb from "./DeviceBulb";
 import DeviceOutlet from "./DeviceOutlet";
 import DeviceTemperatureSensor from "./DeviceTemperatureSensor";
@@ -26,6 +27,7 @@ function RoomSection({ roomName, devices }) {
             );
           }
         })}
+        <AddNew />
       </div>
     </div>
   );
