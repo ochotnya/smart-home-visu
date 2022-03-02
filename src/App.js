@@ -26,7 +26,6 @@ function App() {
           });
           event.target.style.transform = `translate(${position.x}px, ${position.y}px)`;
         },
-
       },
     })
     .styleCursor(false);
@@ -73,6 +72,7 @@ function App() {
       <div className="App">
         {selectedDevice !== "" && (
           <Popup
+            position={position}
             open={isOpenPopup}
             selectedDevice={rooms
               .find((room) => room.name === selectedRoom)

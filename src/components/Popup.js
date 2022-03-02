@@ -5,7 +5,7 @@ import { DetailsOutlet } from "./DeviceOutlet";
 import { DetailsTemperature } from "./DeviceTemperatureSensor";
 import { AiOutlineClose } from "react-icons/ai";
 import "./Popup.css";
-function Popup({ open, selectedDevice }) {
+function Popup({ open, selectedDevice, position }) {
   const { closePopup } = useContext(DataContext);
 
   let details = {};
@@ -27,7 +27,10 @@ function Popup({ open, selectedDevice }) {
   }
 
   return open && selectedDevice ? (
-    <div className="popup">
+    <div
+      className="popup"
+      style={{ transform: `translate(${position.x}px, ${position.y}px)` }}
+    >
       <div className="popup__top-bar">
         <div className="popup__header">
           {selectedDevice.name}
