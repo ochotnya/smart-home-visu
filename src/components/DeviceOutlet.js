@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import "./Device.css";
 import { DataContext } from "../context/DataContext";
 import { ImSwitch } from "react-icons/im";
-
+import connectionStateDictionary from "../dictionary";
 function DeviceOutlet({ data, room }) {
   const { setSelectedRoom, setSelectedDevice, openPopup } =
     useContext(DataContext);
@@ -17,7 +17,9 @@ function DeviceOutlet({ data, room }) {
       <div className="device-container__header">Gniazdko</div>
       <div className="device-container__name">{data.name}</div>
       <div className="device-container__content">{data.powerConsumption}W</div>
-      <div className="device-container__connection-state">Połączono</div>
+      <div className="device-container__connection-state">
+        {connectionStateDictionary[data.connectionState]}
+      </div>
     </div>
   );
 }

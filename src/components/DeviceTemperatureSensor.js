@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import "./Device.css";
-
+import connectionStateDictionary from "../dictionary";
 import { DataContext } from "../context/DataContext";
 
 function DeviceTemperatureSensor({ data, room }) {
@@ -16,7 +16,9 @@ function DeviceTemperatureSensor({ data, room }) {
       <div className="device-container__header">Temperatura</div>
       <div className="device-container__name">{data.name}</div>
       <div className="device-container__content">{data.temperature}°C</div>
-      <div className="device-container__connection-state">Połączono</div>
+      <div className="device-container__connection-state">
+        {connectionStateDictionary[data.connectionState]}
+      </div>
     </div>
   );
 }

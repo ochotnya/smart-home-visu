@@ -4,6 +4,7 @@ import { DetailsBulb } from "./DeviceBulb";
 import { DetailsOutlet } from "./DeviceOutlet";
 import { DetailsTemperature } from "./DeviceTemperatureSensor";
 import { AiOutlineClose } from "react-icons/ai";
+import connectionStateDictionary from "../dictionary";
 import "./Popup.css";
 function Popup({ open, selectedDevice, position }) {
   const { closePopup } = useContext(DataContext);
@@ -35,7 +36,8 @@ function Popup({ open, selectedDevice, position }) {
         <div className="popup__header">
           {selectedDevice.name}
           <div className="popup__connection-state">
-            Stan połączenia: {selectedDevice.connectionState}
+            Stan połączenia:{" "}
+            {connectionStateDictionary[selectedDevice.connectionState]}
           </div>
         </div>
         <AiOutlineClose

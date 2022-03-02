@@ -3,6 +3,7 @@ import "./Device.css";
 import { AiFillBulb } from "react-icons/ai";
 import { ImSwitch } from "react-icons/im";
 import { DataContext } from "../context/DataContext";
+import connectionStateDictionary from "../dictionary";
 
 function DeviceBulb({ data, room }) {
   const [turnedOn, setTurnedOn] = useState(false);
@@ -21,7 +22,9 @@ function DeviceBulb({ data, room }) {
       <div className="device-container__content">
         <AiFillBulb size={30} className={turnedOn ? "bulbOn" : "bulbOff"} />
       </div>
-      <div className="device-container__connection-state">Połączono</div>
+      <div className="device-container__connection-state">
+        {connectionStateDictionary[data.connectionState]}
+      </div>
     </div>
   );
 }
