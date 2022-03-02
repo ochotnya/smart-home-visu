@@ -1,12 +1,12 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import "./Device.css";
 import { AiFillBulb } from "react-icons/ai";
 import { ImSwitch } from "react-icons/im";
 import { DataContext } from "../context/DataContext";
 import connectionStateDictionary from "../dictionary";
 
+//dashboard control
 function DeviceBulb({ data, room }) {
-  const [turnedOn, setTurnedOn] = useState(false);
   const { setSelectedRoom, setSelectedDevice, openPopup } =
     useContext(DataContext);
 
@@ -20,7 +20,10 @@ function DeviceBulb({ data, room }) {
       <div className="device-container__header">Światło</div>
       <div className="device-container__name">{data.name}</div>
       <div className="device-container__content">
-        <AiFillBulb size={30} className={turnedOn ? "bulbOn" : "bulbOff"} />
+        <AiFillBulb
+          size={30}
+          className={data.isTurnedOn ? "bulbOn" : "bulbOff"}
+        />
       </div>
       <div className="device-container__connection-state">
         {connectionStateDictionary[data.connectionState]}
@@ -29,6 +32,7 @@ function DeviceBulb({ data, room }) {
   );
 }
 
+//popup info
 function DetailsBulb({ data }) {
   return (
     <div className="details__light-controls">

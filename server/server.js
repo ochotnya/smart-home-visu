@@ -63,7 +63,7 @@ var room2 = {
       id: "bulb4",
       name: "Lampa",
       connectionState: "connected",
-      isTurnedOn: true,
+      isTurnedOn: false,
       brightness: 30,
       color: "#eeccff",
     },

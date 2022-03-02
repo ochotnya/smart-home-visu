@@ -3,6 +3,8 @@ import "./Device.css";
 import { DataContext } from "../context/DataContext";
 import { ImSwitch } from "react-icons/im";
 import connectionStateDictionary from "../dictionary";
+
+//dashboard control
 function DeviceOutlet({ data, room }) {
   const { setSelectedRoom, setSelectedDevice, openPopup } =
     useContext(DataContext);
@@ -24,6 +26,7 @@ function DeviceOutlet({ data, room }) {
   );
 }
 
+//popup info
 function DetailsOutlet({ data }) {
   return (
     <div className="details__container">

@@ -21,12 +21,10 @@
 .device-container__header {
   font-weight: 700;
   font-size: 1rem;
-  /* background-color: rgb(226, 21, 148); */
 }
 .device-container__name {
   font-weight: 500;
   font-size: 0.8rem;
-  /* background-color: rgb(255, 153, 0); */
 }
 
 .device-container__content {
@@ -34,19 +32,15 @@
   align-items: center;
   justify-content: center;
   height: 100%;
-  /* background-color: red; */
   font-size: 2rem;
 }
 .device-container__connection-state {
   text-align: left;
   font-size: 0.6rem;
-  /* background-color: rgb(95, 20, 214); */
 }
 
 .details__container {
-  /* border: 1px solid black; */
   text-align: center;
-  /* background-color: rebeccapurple; */
 }
 
 .details__temperature {
@@ -66,7 +60,6 @@
   display: grid;
   width: 100%;
   grid-template-columns: 1fr 1fr 1fr;
-  /* background-color: blue; */
 }
 .details__light__turned-on {
   display: flex;
@@ -75,7 +68,6 @@
   align-items: center;
   grid-column: 1;
   cursor: pointer;
-  /* background-color: black; */
 }
 .details__light-color {
   background-color: transparent;
@@ -84,7 +76,6 @@
   border: none;
   width: 4rem;
   height: 4rem;
-  /* background-color: yellow; */
 }
 .details__light-color::-webkit-color-swatch {
   border-radius: 50%;
@@ -96,7 +87,6 @@
   text-align: center;
   flex-direction: column;
   grid-column: 3;
-  /* background-color: red; */
 }
 
 .add-new {

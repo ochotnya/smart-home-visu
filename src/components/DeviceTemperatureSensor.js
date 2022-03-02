@@ -3,6 +3,7 @@ import "./Device.css";
 import connectionStateDictionary from "../dictionary";
 import { DataContext } from "../context/DataContext";
 
+//dashboard control
 function DeviceTemperatureSensor({ data, room }) {
   const { setSelectedRoom, setSelectedDevice, openPopup } =
     useContext(DataContext);
@@ -23,6 +24,7 @@ function DeviceTemperatureSensor({ data, room }) {
   );
 }
 
+//popup info
 function DetailsTemperature({ data }) {
   return (
     <div className="details__container">

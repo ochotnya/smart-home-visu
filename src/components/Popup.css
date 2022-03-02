@@ -6,7 +6,6 @@
   left: 0;
   right: 0;
   text-align: center;
-  /* max-width: 35rem; */
   height: 15rem;
   background-color: #ffffff;
   box-shadow: 0px 0px 10px 1px #969696;
@@ -20,7 +19,6 @@
   cursor: pointer;
 }
 .popup__header {
-  /* background-color: aqua; */
   position: relative;
   font-size: 2.5rem;
   font-weight: 300;
@@ -30,7 +28,6 @@
   justify-content: space-between;
 }
 .popup__content {
-  /* background-color: gold; */
   display: flex;
   flex: 1;
   align-items: center;
